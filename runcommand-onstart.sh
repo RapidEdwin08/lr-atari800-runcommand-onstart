@@ -9,9 +9,13 @@ emu="$2"
 # get the rom name
 rom="$3"
 
-echo $system >&2
-echo $emu >&2
-echo $rom >&2
+# Remove any Logging into [runcommand.log] before ROM is Launched
+# [202203] Updated to Fix Compatibility Issue with [lzdoom-dazi]
+if [ $emu == "lr-atari800" ]; then
+	echo $system >&2
+	echo $emu >&2
+	echo $rom >&2
+fi
 
 # apply Atari 8-bit specific patches to retroarch-core-options.cfg and to atari800.cfg
 # [202202] Updated [atari800.cfg] to [lr-atari800.cfg]
@@ -162,5 +166,5 @@ elif [ $system == "atari5200" ]; then
   sed -i 's/ARTIFACT\_NTSC=.*/ARTIFACT\_NTSC=NONE/g' /opt/retropie/configs/atari800/lr-atari800.cfg
   sed -i 's/ARTIFACT\_NTSC\_MODE=./ARTIFACT\_NTSC\_MODE=0/g' /opt/retropie/configs/atari800/lr-atari800.cfg
 else
-  echo "Not an lr-atari800 system." >&2
+  echo "Not an lr-atari800 system." > /dev/null 2>&1
 fi
