@@ -9,8 +9,7 @@ emu="$2"
 # get the rom name
 rom="$3"
 
-# Remove any Logging into [runcommand.log] before ROM is Launched
-# [202203] Updated to Fix Compatibility Issue with [lzdoom-dazi]
+# [202203] Updated to Remove any Logging into [runcommand.log] before ROM is Launched
 if [ $emu == "lr-atari800" ]; then
 	echo $system >&2
 	echo $emu >&2
